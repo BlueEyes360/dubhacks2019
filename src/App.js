@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Video from './components/Video/Video';
+import Microphone from './components/Microphone/Microphone';
 
 class App extends Component {
 
@@ -9,6 +10,7 @@ class App extends Component {
         return (
             <div className="App">
                 <Video></Video>
+                <Microphone></Microphone>
             </div>
         );
     }
