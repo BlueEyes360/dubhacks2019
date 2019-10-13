@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import WaveFile from 'wavefile';
 import $ from 'jquery';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -10,17 +9,11 @@ import './Microphone.css';
 class Microphone extends Component {
 
     componentDidMount() {
-        const WaveFile = require('wavefile');        
-        var buffer = "./Test_wav/OSR_us_000_0030_8k.wav";
-        //src="./dist/wavefile.umd.js";
-        let wav = new WaveFile(buffer);
-        let wavBuffer = wav.toBuffer();
-
-        //const SUB_KEY = "f1c1a1b5b421452cafb77556f5896f27";
-        //const BASE_URL = "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
-        //var token = "";
+        const SUB_KEY = "f1c1a1b5b421452cafb77556f5896f27";
+        const BASE_URL = "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
+        var token = "";
         
-        /*$.ajax({
+        $.ajax({
             beforeSend: function(xhrObj){
                 xhrObj.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
                 xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", SUB_KEY);
@@ -48,13 +41,13 @@ class Microphone extends Component {
             url: BASE_URL_TTS, 
             type: "POST",
             format: "simple",
-            //body: wav_url,
+            body: wav_url,
         })
         .done(function(data) {
             response = data.DisplayText[0];
-        })*/
+        })
 
-        console.log('response ' + wavBuffer);
+        console.log('response ' + response);
     };
 
     render() {
