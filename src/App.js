@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Video from './components/Video/Video';
-import Captions from './components/Captions/Captions';
+// import Captions from './components/Captions/Captions';
 import UI from './components/UI/UI';
 
 import './App.css';
@@ -12,7 +12,7 @@ class App extends Component {
         return (
             <div className="App">
                 <Video></Video>
-                <Captions></Captions>
+                {/* <Captions></Captions> */}
                 <UI></UI>
             </div>
         );
