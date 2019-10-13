@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 
-import { MICROSOFT_API_KEY1, MICROSOFT_BASE_URL } from './keys/MicrosoftKeys';
+import { MICROSOFT_API_KEY1, MICROSOFT_BASE_URL } from '../../keys/MicrosoftKeys';
 
 class EmotionDetection extends Component {
 
