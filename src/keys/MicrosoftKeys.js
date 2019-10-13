@@ -6,3 +6,6 @@ export {MICROSOFT_API_KEY1};
 
 const MICROSOFT_API_KEY2 = "2ea85f801dfb40fd87f99ec032793541";
 export {MICROSOFT_API_KEY2};
+
+const MT_K = "1788ebc113db4c0ab969b991e85869b7";
+export {MT_K};

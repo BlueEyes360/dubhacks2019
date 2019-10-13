@@ -2,7 +2,6 @@
     z-index: 2;
     position: absolute;
     /* left: 45vw; */
-    top: 85vh;
     color: yellow;
     text-shadow:
         -1px -1px 0 #000,
@@ -13,4 +12,12 @@
     display: block;
     margin: 0 auto;
     width: 100vw;
+}
+
+.regCaptions {
+    top: 85vh;
+}
+
+.transCaptions {
+    top: 90vh;
 }
