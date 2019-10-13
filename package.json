@@ -12,7 +12,9 @@
     "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.10.2",
     "react-scripts": "3.2.0",
-    "typescript": "^3.6.4"
+    "sox": "^0.1.0",
+    "typescript": "^3.6.4",
+    "wavefile": "^8.4.6"
   },
   "scripts": {
     "start": "react-scripts start",
