@@ -1,0 +1,12 @@
+.captions {
+    z-index: 2;
+    position: absolute;
+    left: 45vw;
+    top: 85vh;
+    color: yellow;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+}

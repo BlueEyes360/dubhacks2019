@@ -1,0 +1,9 @@
+#video {
+    position: absolute;
+    z-index: 1;
+    display: block;
+    margin: 0 auto;
+    left: -50vw;
+    height: 100vh;
+    width: 177vw;
+}

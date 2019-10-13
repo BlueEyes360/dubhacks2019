@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+// import Col from 'react-bootstrap/Col';
 import "./Video.css";
 
 class Video extends Component {
 
     componentDidMount() {
         var video = document.getElementById('video');
-        video.style.width = "100vw";
-        video.style.height = "100vh";
 
         // Get access to the camera!
         if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
