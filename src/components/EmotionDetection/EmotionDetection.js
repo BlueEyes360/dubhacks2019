@@ -6,21 +6,15 @@ import { MICROSOFT_API_KEY1, MICROSOFT_BASE_URL } from '../../keys/MicrosoftKeys
 class EmotionDetection extends Component {
 
     state = {
-        anger: '',
-        contempt: '',
-        disgust: '',
-        fear: '',
-        happiness: '',
-        neutral: '',
-        sadness: '',
-        surprise: ''
-    }
+        count: 1,
+    };
 
-    componentDidUpdate() {
+    componentDidMount = () => {
         this.processImage();
     }
 
-    processImage() {
+    processImage = () => {
+        var thisVar = this;
         var subscriptionKey = MICROSOFT_API_KEY1;
         var baseURL = MICROSOFT_BASE_URL;
 
@@ -43,27 +37,72 @@ class EmotionDetection extends Component {
             data: '{"url": "' + sourceImageURL + '"}',
         })
         .done(function(data) {
-            console.log(data[0].faceAttributes.emotion);
-            this.setState = {
-                anger: data[0].faceAttributes.emotion.anger,
-                contempt: data[0].faceAttributes.emotion.contempt,
-                disgust: data[0].faceAttributes.emotion.disgust,
-                fear: data[0].faceAttributes.emotion.fear,
-                happiness: data[0].faceAttributes.emotion.hapiness,
-                neutral: data[0].faceAttributes.emotion.neutral,
-                sadness: data[0].faceAttributes.emotion.sadness,
-                surprise: data[0].faceAttributes.emotion.surpirse
+            var emotionObject = data[0].faceAttributes.emotion;
+            console.log(emotionObject);
+            
+            var array = [
+                data[0].faceAttributes.emotion.anger,
+                data[0].faceAttributes.emotion.contempt,
+                data[0].faceAttributes.emotion.disgust,
+                data[0].faceAttributes.emotion.fear,
+                data[0].faceAttributes.emotion.happiness,
+                data[0].faceAttributes.emotion.neutral,
+                data[0].faceAttributes.emotion.sadness,
+                data[0].faceAttributes.emotion.surprise
+            ];
+
+            var max = array[0];
+            var maxIndex = 0;
+
+            for (var i = 1; i < array.length; i++)
+            {
+                if (array[i] > max)
+                {
+                    maxIndex = i;
+                    max = array[i];
+                }
             }
+
+            thisVar.setState({ count: maxIndex });  
         })
     }
 
     render() {
-        this.processImage();
         return (
             <div className="App">
-                <h1>{this.state.happiness}</h1>
+                <span className = {this.emotionColorCalc()}>Face</span>
             </div>
         );
+    }
+
+    emotionColorCalc = () => {
+        let emotions = "badge m-2 badge-";
+        switch (this.state.count) {
+            case 0:
+                emotions += "dark";
+                break;
+            case 1:
+                emotions += "primary";
+                break;
+            case 2:
+                emotions += "secondary";
+                break;
+            case 3:
+                emotions += "success";
+                break;
+            case 4:
+                emotions += "danger";
+                break;
+            case 5:
+                emotions += "warning";
+                break;
+            case 6:
+                emotions += "info";
+                break;
+            default:
+                emotions += "dark";
+        }
+        return emotions;
     }
 }
 
