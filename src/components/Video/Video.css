@@ -3,7 +3,12 @@
     z-index: 1;
     display: block;
     margin: 0 auto;
-    left: -50vw;
+    left: -120vw;
     height: 100vh;
-    width: 177vw;
+    /* width: 177vw; */
+}
+
+.myButton {
+    position: absolute;
+    bottom: -10vh;
 }

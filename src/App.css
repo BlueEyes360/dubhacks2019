@@ -1,31 +1,21 @@
 .App {
     text-align: center;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    height: 100%;
 }
 
 #videoLayer {
     position: absolute;
     z-index: 1;
-    /* left: 0px;
-    top: 0px; */
-    width: 100vw;
 }
 
 #captionsLayer {
     position: absolute;
     z-index: 2;
-    /* left: 0px;
-    top: 0px; */
-    width: 100vw;
 }
 
 #UIlayer {
     position: absolute;
     z-index: 3;
-    /* left: 0px;
-    top: 0px; */
-    width: 100vw;
 }
 
 #dubs {
