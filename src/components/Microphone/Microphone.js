@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -7,6 +8,7 @@ import "./Microphone.css";
 class Microphone extends Component {
 
     componentDidMount() {
+        const fs = require('fs');
         const recorder = require('node-record-lpcm16');
         const speech = require('@google-cloud/speech'); //Import the Goolge Cloud client
         
@@ -15,28 +17,17 @@ class Microphone extends Component {
         const sampleRateHertz = 16000;
         const languageCode = 'BCP-47 en-US';
         
-        const request = {
-          config: {
+        var recognizeStream;
+        
+       const config = {
             encoding: encoding,
             sampleRateHertz: sampleRateHertz,
             languageCode: languageCode,
-          },
-          interimResults: false, // If you want interim results, set this to true
         };
-        
-        // Create a recognize stream
-        const recognizeStream = client
-          .streamingRecognize(request)
-          .on('error', console.error)
-          .on('data', data =>
-            process.stdout.write(
-              data.results[0] && data.results[0].alternatives[0]
-                ? `Transcription: ${data.results[0].alternatives[0].transcript}\n`
-                : `\n\nReached transcription time limit, press Ctrl+C\n`
-            )
-          );
-        
-        // Start recording and send the microphone input to the Speech API
+        const audio = {
+            content: fs.readFileSync(recognizeStream).toString('base64'),
+        };
+
         recorder
           .record({
             sampleRateHertz: sampleRateHertz,
@@ -48,7 +39,18 @@ class Microphone extends Component {
           .stream()
           .on('error', console.error)
           .pipe(recognizeStream);
-        
+          
+          $.ajax({
+              url: "https://speech.googleapis.com/v1/speech:recognize",
+              
+              beforeSend: function(xhrObj){
+                xhrObj.setRequestHeader("Content-Type","application/json");
+                xhrObj.setRequestHeader("Authentication", "AIzaSyCDa5topLkHmECOXzQli39zeABA8YkP2wg");
+              },
+
+              type: "POST",
+              data:'{ "config": {"'+ config + '" }, "audio": {"' + audio + '"}'
+          })
         console.log('Listening, press Ctrl+C to stop.');
     };
 
