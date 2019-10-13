@@ -1,3 +1,28 @@
 .App {
-  text-align: center;
+    text-align: center;
+    height: 100%;
+}
+
+#videoLayer {
+    position: absolute;
+    z-index: 1;
+}
+
+#captionsLayer {
+    position: absolute;
+    z-index: 2;
+}
+
+#UIlayer {
+    position: absolute;
+    z-index: 3;
+}
+
+#dubs {
+    z-index: 3;
+    position: absolute;
+    left: 50vw;
+    bottom: 30vh;
+    color: yellow;
+    border: 1px black;
 }
